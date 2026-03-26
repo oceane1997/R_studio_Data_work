@@ -165,19 +165,65 @@ ggplot(penguins,
        aes(x = fct_infreq(species)))+
   geom_bar()
 
+##############numerical variable (continuous)
+####                 HISTOGRAM
+ggplot(penguins,
+       aes(x = body_mass_g))+
+  geom_histogram(binwidth = 200) #play with different binwidth to see which one show a better distribution of our data set
+
+
+ggplot(penguins,
+       aes(x = body_mass_g))+
+  geom_histogram(binwidth = 20)
+ggplot(penguins,
+       aes(x = body_mass_g))+
+  geom_histogram(binwidth = 2000)
+
+
+####                DENSITY PLOT
+#moins detaillé qu'un histogram but we can quickly see the shape of the distribution (modes and skewness)
+
+ggplot(penguins,
+       aes(x = body_mass_g))+
+  geom_density()
 
 
 
+######EXERCISES 2 ----
+
+#1. «Make a bar plot of species of penguins, where you assign species to the y aesthetic.»
+
+ggplot(penguins,
+       aes(y = species)) +
+  geom_bar()
+
+#2. 
+
+ggplot(penguins, aes(x = species)) +
+  geom_bar(color = "red")
+
+ggplot(penguins, aes(x = species)) +
+  geom_bar(fill = "red")       #utiliser l'argument fill plutot que color pour colorer les bar
 
 
 
+#3. the bins argument in geom_histogram shows the number of bins (Defaults to 30)
 
+str(diamonds)
 
+ggplot(diamonds,
+       aes(x = carat)) +
+  geom_histogram()
 
+ggplot(diamonds,
+       aes(x = carat)) +
+  geom_histogram(binwidth = 0.30)
 
+ggplot(diamonds,
+       aes(x = carat)) +
+  geom_density()
 
-
-
+######Visualizing relationship
 
 
 
