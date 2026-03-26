@@ -80,32 +80,48 @@ ggplot(data = penguins,
   scale_color_colorblind()
 
 
+######EXERCISES 1 ----
+###### 1.How many rows are in penguins? How many columns?
+
+str(penguins)
+#344 lignes et 8 colonnes
+
+###### 2.What does the bill_depth_mm variable in the penguins data frame describe? Read the help for ?penguins to find out. »
+
+?penguins #epaisseur du bec de penguin
+
+
+##### 3.«Make a scatterplot of bill_depth_mm versus bill_length_mm. 
+#That is, make a scatterplot with bill_depth_mm on the y-axis and bill_length_mm on the x-axis.
+# Describe the relationship between these two variables.»
 
 
 
+ggplot(data = penguins,
+       mapping = aes(x = bill_length_mm, y= bill_depth_mm))+
+  geom_point(mapping = aes(color = species))
 
 
+ggplot(data = penguins,
+       mapping = aes(x = species, y= bill_depth_mm))+
+  geom_line()
 
 
+ggplot(data = penguins,
+       mapping = aes(x = species, y= bill_depth_mm))+
+  geom_boxplot()
 
 
+ggplot(data = penguins,
+       mapping = aes(x = bill_length_mm, y= bill_depth_mm))+
+  geom_point(mapping = aes(color = species), na.rm = T)        #pas de message lorsque les valeurs manquantes sont retirees
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ggplot(data = penguins,
+       mapping = aes(x = bill_length_mm, y= bill_depth_mm))+
+  geom_point(mapping = aes(color = species), na.rm = T) +
+  labs(caption = "Data come from the palmerpenguins package") #argument caption dans labs pour un petit texte
+                                                              #en bas à droite
 
 
 
