@@ -124,7 +124,12 @@ ggplot(data = penguins,
                                                               #en bas à droite
 
 
+# 8. recreate visualization
 
+ggplot(data = penguins,
+       mapping = aes(x = flipper_length_mm, y = body_mass_g)) +
+  geom_point(aes(colour = bill_depth_mm))+
+  geom_smooth()
 
 
 
