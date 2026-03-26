@@ -131,6 +131,56 @@ ggplot(data = penguins,
   geom_point(aes(colour = bill_depth_mm))+
   geom_smooth()
 
+levels(penguins$island)
+
+# 9. same
+levels(penguins$island)
+
+ggplot(data = penguins,
+       mapping = aes(x = flipper_length_mm, y = body_mass_g, color = island)) +
+  geom_point()+
+  geom_smooth(se = F)
+
+
+ggplot() +
+  geom_point(
+    data = penguins,
+    mapping = aes(x = flipper_length_mm, y = body_mass_g)
+  ) +
+  geom_smooth(
+    data = penguins,
+    mapping = aes(x = flipper_length_mm, y = body_mass_g)
+  )
+
+##categorical variable visualization ----
+ggplot(penguins,
+       aes(x=species))+
+  geom_bar()
+
+#pour les variables categorielles non ordinales, preferer une presentation selon un ordre de frequence 
+#avec la fonction fct_infreq
+
+
+ggplot(penguins,
+       aes(x = fct_infreq(species)))+
+  geom_bar()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
