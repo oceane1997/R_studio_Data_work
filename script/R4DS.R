@@ -224,12 +224,22 @@ ggplot(diamonds,
   geom_density()
 
 ######Visualizing relationship
+#Numerical and categorical variable
+
+         #we can use side by side boxplot for each level of the categorical variable
 
 
 
+ggplot(penguins, aes(x = species, y = body_mass_g)) +
+  geom_boxplot()
+
+        #density plot for each species body mass
+
+ggplot(penguins, aes(x = body_mass_g, color = species)) +
+  geom_density(linewidth = 0.75) #epaisseur des lignes
 
 
-
-
+ggplot(penguins, aes(x = body_mass_g, color = species, fill = species)) +
+  geom_density(alpha = 0.5) #alpha to add transparency between 0 and 1
 
 
