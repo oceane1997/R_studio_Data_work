@@ -54,7 +54,7 @@ round(predict(model1, new_data1))
 
 
 ########################################################################################
-#######################STATISTICS : Multiple regression 
+#######################STATISTICS : Multiple linear regression 
 
 head(trees)
 
@@ -102,18 +102,80 @@ lm(mpg ~ wt + am1, data = mtcars) |> summary()
 lm(mpg ~ wt * am1, data = mtcars) |> summary()
 
 
-#assumptions ---- 
+#Assumptions ---- 
 # when we make linear regression should be validated 
 
 #assumption 1 : there's a linear relationship between the explanatory variable and the outcome variable. # the next 3 are about residual
      #residals are the distance between the actual values and the fitted or predicted values
 
-#assumption 2 : 
+#assumption 2 : residuals are normally distributed
 
 
-#assumption 3 : 
+#assumption 3 : residuals are homoscadastic : the variance between the residuals as you go across the fitted values is evenly distributed: no pattern
 
 
-#assumption 4 : 
+#assumption 4 : residuals are independent : the error that we see at a point of the plot is not influenced by an error at another point of the plot 
+
+                                 #####how to check those assumptions
+
+
+##ASSUMPTION 1 : LINEAR RELATIONSHIP BETWEEN EXPOSURE AND OUTCOME----
+
+#visual verification (a plot to visualize the outcome by the explanatory variable 
+     #or a fitted value/ residuals : we expect the dots to be distrobuted randomly on the plot without any pattern)
+
+#statistical test can be done too especially if plot shows some pattern : 
+                   #The HARVEY COLLEAR TEST 
+         #: L'hypothese nulle ~ il existe une relation lineaire : we are then looking for a high p value
+
+
+
+
+##ASSUMPTION 2 : RESIDUALS NORMALLY DISTRIBUTED----
+
+#visual verification (histogram of the residuals, QQplot) subjective visual clue
+
+##statistical test can be done too : 
+                   # The SHAPIRO WILK NORMALITY TEST
+         #: L'hypothese nulle ~ Les residus sont normaement distribués : we are then looking for a high p value
+
+
+
+
+##ASSUMPTION 3 and 4 : HOMOSCADISTIC AND INDEPENDANT RESIDUALS----
+
+#visual verification (residuals vs fitted plot) : no pattern 
+
+##Statistical test for homoscadistic 
+
+       # BREUSCH PAGAN TEST bptest(model) # again high pvalue or
+       # COOK weisberg TEST
+
+
+##Statistical test for independent residuals
+
+      #DURBIN WATSON TEST  durbinWatsonTest(model) # if the DW Statistic is close to 2 then there is independance
+
+
+#COLINEARITY----
+
+#when we have more than 1 explanatory variable and they are correlated with each other ~ same story being told by more than one variable 
+#consider removing one of them and based on our knowledge on the subject and undertanding of the data
+
+
+########################################################################################
+#######################STATISTICS : how to select variables 
+
+
+
+
+
+
+
+
+
+
+
+
 
 
