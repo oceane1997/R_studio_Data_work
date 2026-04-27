@@ -1,4 +1,8 @@
 
+#######PACKAGES
+library(tidyverse)
+library(MASS)
+
 ################################################################################
 ###################################R PROGRAMMING 101##############################################
 #######################STATISTICS : regression lineaire simple
@@ -161,21 +165,57 @@ lm(mpg ~ wt * am1, data = mtcars) |> summary()
 
 #when we have more than 1 explanatory variable and they are correlated with each other ~ same story being told by more than one variable 
 #consider removing one of them and based on our knowledge on the subject and undertanding of the data
+#check for variance inflation factor VIF
 
 
 ########################################################################################
 #######################STATISTICS : how to select variables 
 
+#add variable one at a time and see if it improves our model
+#or the other way around. start with all the possible variables and remove them one at a time and see how it affects our model
+#akaike information criterion to score our model based on the trade of between complexity and fit 
+
+
+names(swiss)
+
+#library(MASS)
+
+lm(Fertility ~ . , data = swiss) |>
+  step(direction = "backward", trace = 0) |>
+  summary()
+
+#UNIVARIATE analysis 
+
+cor(swiss) |>
+  round(2)
+
+#moderate linear positive or negative relation |0.3 - 0.7|
+#high linear positive or negative relation |0.7 - 1|
+
+model0 <- lm(Fertility ~ . , data = swiss) |>
+  step(direction = "backward", trace = 0)
+
+
+plot(model0)
+
+
+names(mtcars)
+
+mtcars |> 
+  mutate(predicted = predict(lm(mpg ~ wt, data = mtcars))) |>
+  ggplot(aes(wt,mpg)) +
+  geom_point() +
+  geom_smooth(method = lm, se = F)+
+  geom_segment(aes(xend = wt, yend = predicted), color = "red")+
+  theme_bw()
+
+
+plot(lm(mpg ~ wt, data = mtcars))
 
 
 
+########################################################################################
+#######################STATISTICS : how to deal with outliers and colineraity
 
-
-
-
-
-
-
-
-
+################################################
 
